@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<link rel="stylesheet" href="jquery-ui.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <title>Form</title>
+</head>
+
+<body>
+
+  <div id="bookForm">
+    <h2>Book your airport taxi transfer.<br> Worldwide.</h2>
+
+    <div class="form">
+      <div class="relative">
+      <div class="selectButton">
+        <div class="btns active">
+          <a class="selBtn" href="toAir">
+            <span>Take me from location</span>
+            <h3>To Airport</h3>
+          </a>
+        </div>
+        <div class="btns">
+          <a class="selBtn" href="fromAir">
+            <h3>From Airport</h3>
+            <span>To destination</span>
+          </a>
+        </div>
+      </div>
+      </div>
+      <form action="" id="bookingAir">
+        <div class="selectForm" id="toAir">
+        <div class="search">
+          <div class="input">
+            <div class="labelName">Pick up:</div>
+            <span><i class="fa fa-map-marker"></i></span><input type="text" id="searchLocation" placeholder="Search for a location" name='searchLocation'  /><span><i class="fa fa-times"></i></span>
+          </div>
+          <div class="icon" ><i class="fa fa-exchange"></i></div>
+          <div class="input">
+            <div class="labelName">Bring me to airport:</div>
+            <span><i class="fa fa-plane"></i></span><input type="text" id="searchAirport" placeholder="Search for an airport" name='searchAirport' /><span><i class="fa fa-times"></i></span>
+          </div>
+        </div>
+        <div class="pickUp" id="toAir">
+          <div class="input">
+            <div class="labelName">Pick up date</div>
+  <div class="labelName1"><span>Pick up date</span></div>
+            <input type="text" class="dateCalendar" id="date" placeholder="dd/mm/yy" name='date' />
+          </div>
+            <div class="labelName">Pick up time</div>
+            <div class="box">
+          <div class="input">
+                <div class="labelName1"><span>Pick up time</span></div>
+            <select class="hours" id="hour" name="hour" >
+              <option value=""></option>
+            </select>
+          </div>
+            <span class="dots">:</span>
+          <div class="input">
+            <select class="minutes" id="minute" name="minute">
+              <option value=""></option>
+            </select>
+          </div>
+
+        </div>
+        <div class="box">
+          <div class="input">
+            <div class="labelName">Passengers</div>
+            <div class="labelName1"><span>Passengers</span></div>
+            <select class="passengers" id="passengersToAir" name="passengers">
+
+            </select>
+          </div>
+          <div class="input">
+            <div class="labelName">Suitcases</div>
+              <div class="labelName1"><span>Suitcases</span></div>
+            <select class="suitcases" id="suitcases" name="suitcases">
+
+            </select>
+          </div>
+        </div>
+</div>
+<div class="labelName">
+  <input type="checkbox" id="bookToAir" name="bookToAir" value="" onClick="bookingToAir()">
+<label for="bookToAir"><span>Book a round trip</span></label>
+</div>
+
+<div class="returnTrip">
+
+  <div class="input">
+        <div class="labelName1">Time of landing</div>
+      <div class="labelName1">Date of landing</div>
+    <div class="labelName">Date of landing</div>
+  <input type="text" class="dateCalendar" id="returnDate" placeholder="28/02/2020" name='returnDate' />
+  </div>
+      <div class="labelName">Time of landing</div>
+
+  <div class="box">
+  <div class="input">
+
+    <select  class="hours" id="returnHour" name="returnHour">
+  <option value=""></option>
+    </select>
+  </div>
+  <span class="dots">:</span>
+  <div class="input">
+    <div class="labelName"></div>
+    <select class='minutes' id="returnMinutes" name="returnMinutes">
+      <option value=""></option>
+    </select>
+  </div>
+</div>
+</div>
+</div>
+        <!--From Airport--->
+        <div id="fromAir" class="selectForm">
+        <div class="search">
+          <div class="input">
+            <div class="labelName">Pick me up from airport:</div>
+            <span><i class="fa fa-plane"></i></span><input type="text" id="searchAirport" placeholder="Search for an airport" name='searchAirport' /><span><i class="fa fa-times" name='clear'></i></span>
+          </div>
+        <div class="icon"><i class="fa fa-exchange"></i></div>
+          <div class="input">
+            <div class="labelName">Bring me to:</div>
+              <span><i class="fa fa-map-marker"></i></span><input type="text" id="bringMeTo" placeholder="Search for a location" name='bringMeTo' /><span><i class="fa fa-times" name='clear'></i></span>
+          </div>
+        </div>
+
+        <div class="pickUp">
+          <div class="input">
+            <div class="labelName">Date of landing</div>
+            <div class="labelName1"><span>Date of landing</span></div>
+          <input type="text" class="dateCalendar" id="dateOfLanding" placeholder="dd/mm/yy" name='dateOfLanding' />
+          </div>
+          <div class="labelName">Time of landing</div>
+<div class="box">
+          <div class="input">
+<div class="labelName1"><span>Time of landing</span></div>
+            <select  class="hours" id="hourLanding" name="hourLanding">
+              <option value=""></option>
+            </select>
+
+          </div>
+            <span class="dots">:</span>
+          <div class="input">
+            <select class="minutes" id="minuteLanding" name="minuteLanding">
+              <option value=""></option>
+            </select>
+          </div>
+</div>
+<div class="box">
+          <div class="input">
+            <div class="labelName">Passengers</div>
+              <div class="labelName1"><span>Passengers</span></div>
+            <select class="passengers" id="passengersFromAir" name="passengersLanding">
+
+            </select>
+          </div>
+
+          <div class="input">
+            <div class="labelName">Suitcases</div>
+              <div class="labelName1"><span>Suitcases</span></div>
+            <select class="suitcases" id="suitcasesLanding" name="suitcasesLanding">
+
+            </select>
+          </div>
+        </div>
+        </div>
+
+        <div class="labelName">
+          <input type="checkbox" id="bookFromAir" name="bookFromAir" value="" onClick="bookingFromAir()">
+  <label for="bookFromAir"><span>Book a round trip</span></label>
+        </div>
+          <div class="labelName1">Pick up date return trip</div>
+        <div class="returnTrip">
+          <div class="input">
+            <div class="labelName1">Pick up time</div>
+          <div class="labelName1">Pick up date return trip</div>
+
+            <div class="labelName">Pick up date return trip</div>
+          <input type="text" class="dateCalendar" id="returnDate" placeholder="28/02/2020" name='returnDate' />
+          </div>
+              <div class="labelName">Pick up time</div>
+
+          <div class="box">
+          <div class="input">
+
+            <select class="hours" id="returnHour" name="returnHour">
+              <option value=""></option>
+            </select>
+          </div>
+          <span class="dots">:</span>
+          <div class="input">
+            <div class="labelName"></div>
+            <select class="minutes" id="returnMinutes" name="returnMinutes">
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="btn">
+<input  id="submitForm" href="#" class="myButton" type='submit'value="Search for fares"></input>
+ </div>
+      </form>
+    </div>
+  </div>
+
+  <!--STYLE CSS-->
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+  body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins' ;
+overflow-x: hidden;
+  }
+  #bookForm{
+    margin:0 auto;
+  background: rgb(242,242,242);
+    color:rgb(30, 30, 30);
+    box-sizing: border-box;
+  }
+  #bookForm h2{
+    display: none;
+  }
+  #bookForm form{
+    padding:20px;
+
+  }
+  #bookForm .relative{
+    position: relative;
+    width:100%;
+    height:50px;
+  }
+  #bookForm .selectButton{
+    display: flex;
+    position: absolute;
+    width:100%;
+
+  }
+  .active{
+    background: linear-gradient(90deg, #bdff1a 0%, white 100%);
+  background-size:400% 400%;
+  animation-name: animSelector;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  }
+  @-webkit-keyframes animSelector {
+      0%{background-position:0% 42%}
+      50%{background-position:100% 59%}
+      100%{background-position:0% 42%}
+  }
+  @-moz-keyframes animSelector {
+      0%{background-position:0% 42%}
+      50%{background-position:100% 59%}
+      100%{background-position:0% 42%}
+  }
+  @keyframes animSelector {
+      0%{background-position:0% 42%}
+      50%{background-position:100% 59%}
+      100%{background-position:0% 42%}
+  }
+  #bookForm .selectButton .btns{
+    flex:1;
+    box-sizing: border-box;
+      transition: all .25s;
+  }
+  #bookForm .selectButton .btns:hover{
+    border:solid 1px rgba(0,0,0,.1);
+    transition: all .25s;
+    box-sizing: border-box;
+
+  }
+  #bookForm .selectButton .btns a{
+    text-decoration: none;
+width:100%;
+padding:10px;
+display: block;
+  }
+  #bookForm .selectButton .btns h3{
+    font-size:21px;
+    padding:0;
+    margin:0;
+      font-weight: 600;
+      color:rgb(50,50,50);
+  }
+  #bookForm .selectButton .btns span{
+    display: none;
+  }
+  #bookForm .search .icon{
+  display: none;
+  }
+
+  #bookForm .input{
+    flex-basis: 100%;
+    margin:13px auto;
+  }
+
+    #bookForm .dots{
+    display: none;
+  }
+  #bookForm .labelName{
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  #bookForm .labelName1{
+    display: none;
+  }
+
+  #bookForm .search .input span{
+  position: relative;
+  font-size: 21px;
+
+  }
+  #bookForm .search .input span:nth-of-type(1) .fa{
+    position: absolute;
+    top:7px;
+    left:7px;
+
+  }
+
+  #bookForm .search .input span:nth-of-type(2) .fa{
+    position: absolute;
+    font-size: 19px;
+  color:rgb(197, 197, 197);
+    top:7px;
+    right:7px;
+  cursor:pointer;
+    transition: all .25s;
+  }
+  #bookForm .search .input span:nth-of-type(2) .fa:hover{
+    color:black;
+    transition: all .25s;
+  }
+  #bookForm .search .input input,
+  #bookForm .returnTrip .input input,
+  #bookForm .pickUp #date,
+  #bookForm .pickUp #dateOfLanding,
+  #bookForm .pickUp .box .input select,
+  #bookForm .returnTrip .box .input select{
+    border: solid 1px #999;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 42px;
+    padding-left: 29px;
+      padding-right: 29px;
+  }
+  #bookForm .pickUp .input:nth-of-type(1) input{
+    padding-left:5px;
+  }
+  #bookForm  #date,
+    #bookForm  #dateOfLanding{
+      padding-left: 10px!important;
+  }
+  #bookForm .pickUp .box,
+  #bookForm .returnTrip .box
+  {
+    display:flex;
+
+  }
+  #bookForm .pickUp .box .input,
+  #bookForm .returnTrip .box .input{
+    flex:1;
+  }
+  #bookForm .pickUp .box .input select,
+  #bookForm .returnTrip .box .input select{
+
+    padding-left: 7px;
+    -webkit-appearance: none;
+      -moz-appearance: none;
+  }
+  .btn{
+    text-align: center;
+  }
+   .myButton {
+     margin-top:30px;
+  	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+  	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+  	background-color:#3d94f6;
+  	border-radius:6px;
+  	border:1px solid #337fed;
+  	display:inline-block;
+  	cursor:pointer;
+  	color:#ffffff;
+  	font-family:Arial;
+  	font-size:17px;
+  	font-weight:bold;
+    padding:15px 0;
+
+    box-sizing: border-box;
+    width:100%;
+  	text-decoration:none;
+  	text-shadow:0px 1px 0px #1570cd;
+  }
+  .myButton:hover {
+  	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+  	background-color:#1e62d0;
+  }
+  .myButton:active {
+  	position:relative;
+  	top:1px;
+  }
+
+  input[type=checkbox] + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+  }
+
+  input[type=checkbox] {
+    display: none;
+  }
+
+  input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.36em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+  }
+
+  input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  }
+
+  input[type=checkbox]:checked + label:before {
+    background-color: #1e62d0;
+    border-color: #1e62d0;
+    color: #fff;
+  }
+
+  input[type=checkbox]:disabled + label:before {
+    transform: scale(1);
+    border-color: #aaa;
+  }
+
+  input[type=checkbox]:checked:disabled + label:before {
+    transform: scale(1);
+    background-color: #bfb;
+    border-color: #bfb;
+  }
+  #fromAir{
+    display: none;
+  }
+  #bookForm .labelName span{
+    padding-left:10px;
+    font-weight: 400;
+  }
+  .returnTrip{
+    display:none;
+  }
+    .returnTrip .input input{
+      padding-left: 10px !important;
+    }
+  /***MEDIA QUERY***/
+  @media all and (min-width:768px){
+    #bookForm{
+      width:760px;
+margin-top:20px;
+    }
+      #bookForm .dots{
+      display: block;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    #bookForm h2{
+background-color: white;
+      line-height:41px;
+      padding:0 0 10px 15px;
+      font-weight: 700;
+      font-size: 32px;
+      display: block;
+      margin:0;
+    }
+    #bookForm .selectButton .btns h3{
+      font-size:24px ;
+    }
+      #bookForm .selectButton .btns a{
+    padding:10px;
+    display: block;
+
+      }
+      #bookForm .selectButton .btns span{
+        display: block;
+        color: rgb(50,50,50);
+        font-weight: 700;
+      }
+        #bookForm .search{
+          display: flex;
+        }
+        #bookForm .search .icon{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top:20px;
+          font-size: 23px;
+          padding:0 40px;
+          cursor:pointer;
+        }
+        #bookForm form{
+          padding:30px;
+        }
+          #bookForm .pickUp{
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          }
+
+              #bookForm .pickUp .labelName{
+                   display: none;
+              }
+              #bookForm .pickUp .input .labelName1{
+                display: block;
+                font-weight: 600;
+                font-size: 16px;
+                position: relative;
+              }
+                #bookForm .pickUp .input .labelName1 span{
+                  position: absolute;
+                  top:-25px;
+                  display: block;
+                  width:200px;
+                }
+
+            #bookForm .pickUp .input{
+              flex:3;
+            }
+            #bookForm .pickUp .box{
+              flex:4;
+              align-items: center;
+              justify-content: center;
+            }
+                #bookForm .pickUp{
+                  margin-top:20px;
+                }
+
+            #bookForm .pickUp .box .input{
+              margin: 13px 5px;
+            }
+              #bookForm .returntrip{
+              flex:1;
+
+              }
+              #bookForm .returnTrip .input{
+                    position: relative;
+                flex:1.6;
+                margin-right:5px;
+                  margin-top:44px;
+              }
+              #bookForm .returnTrip .box{
+                flex:1;
+              }
+              #bookForm .returnTrip .labelName{
+                display: none;
+              }
+                #bookForm .returnTrip .labelName1{
+
+                  display: block;
+                  position: absolute;
+                  font-weight: bold;
+                }
+                #bookForm .returnTrip .dots{
+                  margin-top: 50px;
+                  padding-right:5px;
+                }
+                #bookForm .returnTrip .labelName1:nth-of-type(1){
+                  top:-25px;
+                  left:101%;
+                  z-index: 2;
+                  width:150px;
+                }
+                #bookForm .returnTrip .input .labelName1{
+                  top:-25px;
+                }
+
+            .btn{
+              text-align: right;
+            }
+  .myButton {
+    text-align: center;
+    width:35%;
+    padding:15px 0;
+  }
+  }
+
+/*CALENDAR*/
+.ui-datepicker-prev .ui-icon
+{
+  width:20px;
+  height:20px;
+  background-image: url('https://s3.us-east-2.amazonaws.com/upload-icon/uploads/icons/png/2967881931543238858-256.png');
+background-repeat: no-repeat;
+background-size: cover;
+}
+.ui-datepicker-next .ui-icon
+{
+  width:20px;
+  height:20px;
+  background-image: url('https://s3.us-east-2.amazonaws.com/upload-icon/uploads/icons/png/5809905011543238858-256.png');
+background-repeat: no-repeat;
+background-size: cover;
+}
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
